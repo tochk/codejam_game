@@ -8,7 +8,8 @@ import * as Phaser from "phaser";
 class Preload extends Phaser.State {
 
     preload() {
-
+        this.game.load.tilemap('tree_map', 'assets/tree.json', null, Phaser.Tilemap.TILED_JSON);
+        this.game.load.image('treeSprite', 'assets/treeSprite.png', true);
     }
 
     create() {
