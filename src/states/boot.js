@@ -1,8 +1,3 @@
-/**
- * Created by tochk on 17.12.2016.
- */
-
-
 //import * as Phaser from "phaser";
 
 class Boot extends Phaser.State {

@@ -1,23 +1,20 @@
-/**
- * Created by tochk on 17.12.2016.
- */
 import * as Phaser from "phaser";
 
-class GameOver extends Phaser.State {
+class Success extends Phaser.State {
 
     preload() {
 
     }
 
     create() {
-        console.log("Loaded gameover");
+        console.log("Loaded success");
         this.stage.backgroundColor = "#27e8cb";
 
         let width = this.game.width,
             height = this.game.height;
         let textColor = "#ffffff";
 
-        this.title = this.createText(width/2, height/2 - 150, "GAME OVER", 100, '#ff2154');
+        this.title = this.createText(width/2, height/2 - 150, "YOU WIN", 100, '#ff2154');
         this.toStartButton = this.createText(width/2, height/2 - 50, "To menu", 80, textColor);
         this.openTree = this.createText(width/2, height/2 + 50, "Open tree", 80, textColor);
 
@@ -52,4 +49,4 @@ class GameOver extends Phaser.State {
     }
 }
 
-export default GameOver;
+export default Success;
