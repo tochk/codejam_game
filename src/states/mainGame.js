@@ -66,7 +66,6 @@ class MainGame extends Phaser.State {
         // this.map.setCollisionBetween(0, 2, true, this.layers.box);
         // this.map.setCollision([85], true, this.layers.map);
         this.map.setCollisionBetween(0, 10, true, this.layers.map);
-        this.map.setCollisionBetween(0, 10, true, this.layers.end);
     }
 
     createPlayer() {

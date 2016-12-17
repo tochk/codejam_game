@@ -16,9 +16,10 @@ class Tree extends Phaser.State {
     create() {
         //buttons
         console.log("Loaded tree");
-        this.stage.backgroundColor = "#4488AA";
+        this.stage.backgroundColor = "#27e8cb";
         this.createMap();
-        this.toStartButton = this.game.add.text(20, 20, " ← Return to menu", {font: "30px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
+
+        this.toStartButton = this.createText(20, 20, " ← Return to menu", 30, "ffffff");
         this.toStartButton.inputEnabled = true;
         this.toStartButton.input.useHandCursor = true;
         this.toStartButton.events.onInputDown.add(this.toStart, this);
@@ -33,11 +34,25 @@ class Tree extends Phaser.State {
         this.layers.tree_third = this.map.createLayer('tree_third');
         for (let key of Object.keys(this.layers)) {
             this.layers[key].resizeWorld();
+            this.layers[key].position.set(15, 10);
+            this.layers[key].fixedToCamera = false;
         }
     }
 
     toStart() {
         this.game.state.start("Start");
+    }
+
+    createText(x, y, text, textSize, textColor) {
+        let style = {
+            fontSize: textSize,
+            fontWeight: 'bold',
+            font: 'Arial',
+            fill: textColor
+        };
+        let button = this.game.add.text(x, y, text, style);
+        button.fixedToCamera = true;
+        return button;
     }
 }
 

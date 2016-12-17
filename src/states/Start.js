@@ -7,10 +7,17 @@ class Start extends Phaser.State {
 
     create() {
         console.log("Loaded start");
-        this.stage.backgroundColor = "#4488AA";
-        this.title = this.game.add.text(110, 70, "game_name", {font: "100px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
-        this.toStartButton = this.game.add.text(60, 280, "START GAME!", {font: "100px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
-        this.openTree = this.game.add.text(200, 430, "Open tree", {font: "80px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
+        let width = this.game.width,
+            height = this.game.height;
+
+        this.stage.backgroundColor = "#27e8cb";
+
+        let minTextColor = "#ffffff",
+            textColor = "#52a6f9";
+        this.title = this.createText(width/2, height/2 - 150, "-GAME-", 90, minTextColor);
+        this.toStartButton = this.createText(width/2, height/2 - 50, "START GAME!", 100, textColor);
+        this.openTree = this.createText(width/2, height/2 + 50, "Achievements tree", 80, minTextColor);
+
         this.toStartButton.inputEnabled = true;
         this.toStartButton.input.useHandCursor = true;
         this.toStartButton.events.onInputDown.add(this.startGame, this);
@@ -27,6 +34,19 @@ class Start extends Phaser.State {
         this.game.state.start("Tree");
     }
 
+    createText(x, y, text, textSize, textColor) {
+        let style = {
+            fontSize: textSize,
+            fontWeight: 'bold',
+            font: 'Arial',
+            fill: textColor
+        };
+        let button = this.game.add.text(x, y, text, style);
+        button.fixedToCamera = true;
+        button.anchor.setTo(0.5, 0.5);
+        button.align = 'center';
+        return button;
+    }
 }
 
 export default Start;
