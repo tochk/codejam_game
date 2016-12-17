@@ -8,8 +8,9 @@ class Start extends Phaser.State {
     create() {
         console.log("Loaded start");
         this.stage.backgroundColor = "#4488AA";
-        this.toStartButton = this.game.add.text(50, 200, "START GAME!", {font: "100px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
-        this.openTree = this.game.add.text(200, 350, "Open tree", {font: "80px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
+        this.title = this.game.add.text(110, 70, "game_name", {font: "100px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
+        this.toStartButton = this.game.add.text(60, 280, "START GAME!", {font: "100px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
+        this.openTree = this.game.add.text(200, 430, "Open tree", {font: "80px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
         this.toStartButton.inputEnabled = true;
         this.toStartButton.input.useHandCursor = true;
         this.toStartButton.events.onInputDown.add(this.startGame, this);
