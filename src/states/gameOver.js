@@ -3,6 +3,13 @@
  */
 import * as Phaser from "phaser";
 
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
 class GameOver extends Phaser.State {
 
     preload() {
@@ -27,6 +34,10 @@ class GameOver extends Phaser.State {
         this.openTree.inputEnabled = true;
         this.openTree.input.useHandCursor = true;
         this.openTree.events.onInputDown.add(this.showTree, this);
+
+        if (getCookie("achievement2") != "1") {
+            document.cookie = "achievement2=1";
+        }
     }
 
     toStart() {

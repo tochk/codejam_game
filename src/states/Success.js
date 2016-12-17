@@ -1,5 +1,15 @@
 import * as Phaser from "phaser";
 
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+
+
+
 class Success extends Phaser.State {
 
     preload() {
@@ -24,6 +34,28 @@ class Success extends Phaser.State {
         this.openTree.inputEnabled = true;
         this.openTree.input.useHandCursor = true;
         this.openTree.events.onInputDown.add(this.showTree, this);
+
+        this.loadSavedData();
+        if (this.level == 1) {
+            document.cookie = "level=2";
+            document.cookie = "achievement3=1";
+        }
+        if (this.level == 2) {
+            document.cookie = "level=3";
+            document.cookie = "achievement4=1";
+            document.cookie = "achievement5=1";
+        }
+    }
+
+    loadSavedData () {
+        if (getCookie("data") == "ok") {
+            this.level = parseInt(getCookie("level"));
+            this.achievement1 = parseInt(getCookie("achievement1"));
+            this.achievement2 = parseInt(getCookie("achievement2"));
+            this.achievement3 = parseInt(getCookie("achievement3"));
+            this.achievement4 = parseInt(getCookie("achievement4"));
+            this.achievement5 = parseInt(getCookie("achievement5"));
+        }
     }
 
     toStart() {
