@@ -23,7 +23,7 @@ class Start extends Phaser.State {
 
         let minTextColor = "#ffffff",
             textColor = "#ff2154";
-        this.title = this.createText(width/2, height/2 - 150, "-GAME-", 90, minTextColor);
+        this.title = this.createText(width/2, height/2 - 150, "-HNY-", 90, minTextColor);
         if (getCookie("level") != "3") {
             this.toStartButton = this.createText(width / 2, height / 2 - 50, "START GAME!", 100, textColor);
             this.toStartButton.inputEnabled = true;
