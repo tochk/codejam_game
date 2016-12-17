@@ -3,7 +3,7 @@ import PreLoad from "./states/PreLoad";
 import Start from "./states/Start";
 import Tree from "./states/Tree";
 import GameOver from "./states/GameOver";
-import Main from "./states/MainGame";
+import MainGame from "./states/MainGame";
 
 class Game extends Phaser.Game {
 
@@ -15,7 +15,7 @@ class Game extends Phaser.Game {
         this.state.add('Start', Start, false);
         this.state.add('Tree', Tree, false);
         this.state.add('GameOver', GameOver, false);
-        this.state.add('MainGame', Main, false);
+        this.state.add('MainGame', MainGame, false);
         this.state.start('Boot');
     }
 }
