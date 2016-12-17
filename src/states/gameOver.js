@@ -3,7 +3,7 @@
  */
 import * as Phaser from "phaser";
 
-class Tree extends Phaser.State {
+class GameOver extends Phaser.State {
 
     preload() {
 
@@ -11,9 +11,16 @@ class Tree extends Phaser.State {
 
     create() {
         console.log("Loaded gameover");
-        this.stage.backgroundColor = "#4488AA";
-        this.toStartButton = this.game.add.text(50, 200, "To menu", {font: "100px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
-        this.openTree = this.game.add.text(200, 350, "Open tree", {font: "80px Arial", fill: "#ffffff", stroke: "#000000", strokeThickness: 15});
+        this.stage.backgroundColor = "#27e8cb";
+
+        let width = this.game.width,
+            height = this.game.height;
+        let textColor = "#ffffff";
+
+        this.title = this.createText(width/2, height/2 - 150, "GAME OVER", 100, '#ff2154');
+        this.toStartButton = this.createText(width/2, height/2 - 50, "To menu", 80, textColor);
+        this.openTree = this.createText(width/2, height/2 + 50, "Open tree", 80, textColor);
+
         this.toStartButton.inputEnabled = true;
         this.toStartButton.input.useHandCursor = true;
         this.toStartButton.events.onInputDown.add(this.toStart, this);
@@ -30,6 +37,19 @@ class Tree extends Phaser.State {
         this.game.state.start("Tree");
     }
 
+    createText(x, y, text, textSize, textColor) {
+        let style = {
+            fontSize: textSize,
+            fontWeight: 'bold',
+            font: 'Arial',
+            fill: textColor
+        };
+        let button = this.game.add.text(x, y, text, style);
+        button.fixedToCamera = true;
+        button.anchor.setTo(0.5, 0.5);
+        button.align = 'center';
+        return button;
+    }
 }
 
-export default Tree;
+export default GameOver;
