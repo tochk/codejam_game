@@ -23,6 +23,13 @@ class Tree extends Phaser.State {
         this.toStartButton.input.useHandCursor = true;
         this.toStartButton.events.onInputDown.add(this.toStart, this);
         //end buttons block
+        //achievements
+        this.graphic = this.add.graphics(20, 100);
+        this.graphic.beginFill(0xb3b3b3, 1);
+        this.graphic.lineStyle(2, 0xb3b3b3, 1);
+        this.graphic.drawRect(0, 0, 100, 100);
+        this.graphic.inputEnabled = true;
+        //end achievements block
     }
 
     createMap() {
