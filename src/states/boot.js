@@ -3,7 +3,7 @@
  */
 
 
-import * as Phaser from "phaser";
+//import * as Phaser from "phaser";
 
 class Boot extends Phaser.State {
 
