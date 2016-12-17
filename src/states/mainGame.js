@@ -28,8 +28,9 @@ class MainGame extends Phaser.State {
     }
 
     update() {
-        this.game.physics.arcade.overlap(this.player, this.layers.end, this.end, null, this);
+
         this.game.physics.arcade.collide(this.player, this.layers.map);
+        this.game.physics.arcade.collide(this.player, this.layers.end, this.end_game, null, this);
 
         this.player.body.velocity.x = 0;
         if (this.cursors.left.isDown)
@@ -66,7 +67,8 @@ class MainGame extends Phaser.State {
         // this.map.setCollisionBetween(0, 2, true, this.layers.box);
         // this.map.setCollision([85], true, this.layers.map);
         this.map.setCollisionBetween(0, 10, true, this.layers.map);
-        this.map.setCollisionBetween(0, 10, true, this.layers.end);
+        this.map.setCollisionBetween(0, 24, true, this.layers.end);
+        this.map.setCollisionBetween(0, 29, true, this.layers.end);
     }
 
     createPlayer() {
@@ -77,10 +79,10 @@ class MainGame extends Phaser.State {
         this.game.physics.arcade.gravity.y = 100;
     }
 
-    end() {
+    end_game() {
         // this.game.state.start("MainGame", true, false, this.scores.score);
-        // this.game.state.start("Start");
-        console.log('end game');
+        this.game.state.start("GameOver");
+        console.log('End game');
     }
 }
 
