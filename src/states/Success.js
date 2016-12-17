@@ -1,33 +1,33 @@
-/**
- * Created by tochk on 17.12.2016.
- */
-//import * as Phaser from "phaser";
+import * as Phaser from "phaser";
 
-class Start extends Phaser.State {
+class Success extends Phaser.State {
+
+    preload() {
+
+    }
 
     create() {
-        console.log("Loaded start");
-        let width = this.game.width,
-            height = this.game.height;
-
+        console.log("Loaded success");
         this.stage.backgroundColor = "#27e8cb";
 
-        let minTextColor = "#ffffff",
-            textColor = "#52a6f9";
-        this.title = this.createText(width/2, height/2 - 150, "-GAME-", 90, minTextColor);
-        this.toStartButton = this.createText(width/2, height/2 - 50, "START GAME!", 100, textColor);
-        this.openTree = this.createText(width/2, height/2 + 50, "Achievements tree", 80, minTextColor);
+        let width = this.game.width,
+            height = this.game.height;
+        let textColor = "#ffffff";
+
+        this.title = this.createText(width/2, height/2 - 150, "YOU WIN", 100, '#ff2154');
+        this.toStartButton = this.createText(width/2, height/2 - 50, "To menu", 80, textColor);
+        this.openTree = this.createText(width/2, height/2 + 50, "Open tree", 80, textColor);
 
         this.toStartButton.inputEnabled = true;
         this.toStartButton.input.useHandCursor = true;
-        this.toStartButton.events.onInputDown.add(this.startGame, this);
+        this.toStartButton.events.onInputDown.add(this.toStart, this);
         this.openTree.inputEnabled = true;
         this.openTree.input.useHandCursor = true;
         this.openTree.events.onInputDown.add(this.showTree, this);
     }
 
-    startGame() {
-        this.game.state.start("MainGame");
+    toStart() {
+        this.game.state.start("Start");
     }
 
     showTree() {
@@ -49,4 +49,4 @@ class Start extends Phaser.State {
     }
 }
 
-export default Start;
+export default Success;
