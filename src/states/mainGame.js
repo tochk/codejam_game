@@ -75,6 +75,8 @@ class MainGame extends Phaser.State {
     }
 
     createMap() {
+        if ((this.level != 1) && (this.level != 2))
+            this.level = 1;
         if (this.level == 1) {
             this.map = this.game.add.tilemap('map_level1');
             this.map.addTilesetImage('coin');

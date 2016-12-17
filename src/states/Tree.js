@@ -3,6 +3,13 @@
  */
 import * as Phaser from "phaser";
 
+function getCookie(name) {
+    let matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
 class Tree extends Phaser.State {
 
     constructor() {
@@ -12,9 +19,21 @@ class Tree extends Phaser.State {
         this.layers = {};
     }
 
+    loadSavedData () {
+        if (getCookie("data") == "ok") {
+            console.log("Loaded saved data");
+            this.level = parseInt(getCookie("level"));
+            this.achievement1 = parseInt(getCookie("achievement1"));
+            this.achievement2 = parseInt(getCookie("achievement2"));
+            this.achievement3 = parseInt(getCookie("achievement3"));
+            this.achievement4 = parseInt(getCookie("achievement4"));
+            this.achievement5 = parseInt(getCookie("achievement5"));
+        }
+    }
 
     create() {
         //buttons
+        this.loadSavedData();
         console.log("Loaded tree");
         this.stage.backgroundColor = "#27e8cb";
         this.game.add.sprite(0, 0, 'background');
@@ -46,12 +65,16 @@ class Tree extends Phaser.State {
     addAchiev() {
         let width = this.game.width,
             height = this.game.height;
-
-        this.game.add.sprite(width / 2 - 65, height / 2 + 25, '1');
-        this.game.add.sprite(width / 2, height / 2 + 50, '2');
-        this.game.add.sprite(width / 2 - 65, height / 2 + 75, '3');
-        this.game.add.sprite(width / 2, height / 2 + 100, '4');
-        this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5');
+        if (this.achievement1 == 1)
+            this.game.add.sprite(width / 2 - 65, height / 2 + 25, '1');
+        if (this.achievement2 == 1)
+            this.game.add.sprite(width / 2, height / 2 + 50, '2');
+        if (this.achievement3 == 1)
+            this.game.add.sprite(width / 2 - 65, height / 2 + 75, '3');
+        if (this.achievement4 == 1)
+            this.game.add.sprite(width / 2, height / 2 + 100, '4');
+        if (this.achievement5 == 1)
+            this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5');
     }
 
     toStart() {
