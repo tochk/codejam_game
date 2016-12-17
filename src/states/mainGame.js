@@ -22,6 +22,8 @@ class MainGame extends Phaser.State {
     create() {
         console.log("Loaded maingame");
         this.game.stage.backgroundColor = '#addeff';
+        this.game.add.sprite(0, 0, 'background');
+
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
         this.game.physics.arcade.gravity.y = 200;
         this.createMap();

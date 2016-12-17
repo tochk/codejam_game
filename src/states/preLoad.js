@@ -17,6 +17,14 @@ class Preload extends Phaser.State {
         this.game.load.image('player', 'assets/player.png', true);
         this.game.load.tilemap('tree_map', 'assets/tree.json', null, Phaser.Tilemap.TILED_JSON);
         this.game.load.image('treeSprite', 'assets/treeSprite.png', true);
+
+        this.game.load.image('1', 'assets/achiev/1.png', true);
+        this.game.load.image('2', 'assets/achiev/2.png', true);
+        this.game.load.image('3', 'assets/achiev/3.png', true);
+        this.game.load.image('4', 'assets/achiev/4.png', true);
+        this.game.load.image('5', 'assets/achiev/5.png', true);
+
+        this.game.load.image('background', 'assets/bg.png', true);
     }
 
     create() {

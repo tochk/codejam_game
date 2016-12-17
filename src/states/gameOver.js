@@ -19,14 +19,15 @@ class GameOver extends Phaser.State {
     create() {
         console.log("Loaded gameover");
         this.stage.backgroundColor = "#27e8cb";
+        this.game.add.sprite(0, 0, 'background');
 
         let width = this.game.width,
             height = this.game.height;
         let textColor = "#ffffff";
 
-        this.title = this.createText(width/2, height/2 - 150, "GAME OVER", 100, '#ff2154');
-        this.toStartButton = this.createText(width/2, height/2 - 50, "To menu", 80, textColor);
-        this.openTree = this.createText(width/2, height/2 + 50, "Open tree", 80, textColor);
+        this.title = this.createText(width/2, height/2 - 50, "GAME OVER", 100, '#ff2154');
+        this.toStartButton = this.createText(width/2, height/2 + 50, "To menu", 80, textColor);
+        this.openTree = this.createText(width/2, height/2 + 150, "Open tree", 80, textColor);
 
         this.toStartButton.inputEnabled = true;
         this.toStartButton.input.useHandCursor = true;
