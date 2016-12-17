@@ -9,6 +9,7 @@ class Preload extends Phaser.State {
 
     preload() {
         this.game.load.tilemap('tilemap', 'data/map.json', null, Phaser.Tilemap.TILED_JSON);
+        this.game.load.tilemap('map_level1', 'data/level1.json', null, Phaser.Tilemap.TILED_JSON);
         this.game.load.image('coin', 'assets/coin.png', true);
         this.game.load.image('tiles', 'assets/tiles.png', true);
         this.game.load.image('snow_sprites', 'assets/snow_sprites.png', true);
