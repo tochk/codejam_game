@@ -11,9 +11,10 @@ class Start extends Phaser.State {
             height = this.game.height;
 
         this.stage.backgroundColor = "#27e8cb";
+        this.game.add.sprite(0, 0, 'background');
 
         let minTextColor = "#ffffff",
-            textColor = "#52a6f9";
+            textColor = "#ff2154";
         this.title = this.createText(width/2, height/2 - 150, "-GAME-", 90, minTextColor);
         this.toStartButton = this.createText(width/2, height/2 - 50, "START GAME!", 100, textColor);
         this.openTree = this.createText(width/2, height/2 + 50, "Achievements tree", 80, minTextColor);

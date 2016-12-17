@@ -17,19 +17,16 @@ class Tree extends Phaser.State {
         //buttons
         console.log("Loaded tree");
         this.stage.backgroundColor = "#27e8cb";
+        this.game.add.sprite(0, 0, 'background');
         this.createMap();
 
-        this.toStartButton = this.createText(20, 20, " ← Return to menu", 30, "ffffff");
+        this.toStartButton = this.createText(20, 20, " ← Return to menu", 30, "#ffffff");
         this.toStartButton.inputEnabled = true;
         this.toStartButton.input.useHandCursor = true;
         this.toStartButton.events.onInputDown.add(this.toStart, this);
         //end buttons block
         //achievements
-        this.graphic = this.add.graphics(20, 100);
-        this.graphic.beginFill(0xb3b3b3, 1);
-        this.graphic.lineStyle(2, 0xb3b3b3, 1);
-        this.graphic.drawRect(0, 0, 100, 100);
-        this.graphic.inputEnabled = true;
+        this.addAchiev();
         //end achievements block
     }
 
@@ -44,6 +41,17 @@ class Tree extends Phaser.State {
             this.layers[key].position.set(15, 10);
             this.layers[key].fixedToCamera = false;
         }
+    }
+
+    addAchiev() {
+        let width = this.game.width,
+            height = this.game.height;
+
+        this.game.add.sprite(width / 2 - 65, height / 2 + 25, '1');
+        this.game.add.sprite(width / 2, height / 2 + 50, '2');
+        this.game.add.sprite(width / 2 - 65, height / 2 + 75, '3');
+        this.game.add.sprite(width / 2, height / 2 + 100, '4');
+        this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5');
     }
 
     toStart() {
