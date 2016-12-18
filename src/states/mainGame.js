@@ -15,11 +15,11 @@ class MainGame extends Phaser.State {
         super();
         this.map = {};
         this.layers = {};
-        this.loadSavedData();
     }
 
 
     create() {
+        this.loadSavedData();
         console.log("Loaded maingame");
         this.game.stage.backgroundColor = '#addeff';
         //this.game.add.sprite(0, 0, 'background');
@@ -47,10 +47,20 @@ class MainGame extends Phaser.State {
             this.player.body.velocity.x = 500;
         }
 
-        if (this.jumpButton.isDown && this.player.body.onFloor() && this.game.time.now > this.jumpTimer)
-        {
-            this.player.body.velocity.y = -350;
-            this.jumpTimer = this.game.time.now + 350;
+
+
+        if (this.level == 2) {
+            if (this.jumpButton.isDown && this.player.body.onFloor() && this.game.time.now > this.jumpTimer)
+            {
+                this.player.body.velocity.y = -700;
+                this.jumpTimer = this.game.time.now + 700;
+            }
+        } else {
+            if (this.jumpButton.isDown && this.player.body.onFloor() && this.game.time.now > this.jumpTimer)
+            {
+                this.player.body.velocity.y = -350;
+                this.jumpTimer = this.game.time.now + 350;
+            }
         }
 
         if (this.player.position.y == 610) {
@@ -90,32 +100,18 @@ class MainGame extends Phaser.State {
             this.map.setCollision([2, 3, 17, 18], true, this.layers.map);
             this.map.setCollision([24, 29], true, this.layers.end);
         } else if (this.level == 2) {
-            /*this.map = this.game.add.tilemap('map_level2');
+            this.game.physics.arcade.gravity.y = 300;
+            this.map = this.game.add.tilemap('map_level2');
             this.map.addTilesetImage('tiles');
             this.map.addTilesetImage('snow_sprites');
             this.layers.map = this.map.createLayer('platforms');
             this.layers.block = this.map.createLayer('block');
             this.layers.end = this.map.createLayer('end');
-            this.layers.map.resizeWorld();
-            this.layers.block.resizeWorld();
-            this.layers.end.resizeWorld();
-            debugger;
             for (let key of Object.keys(this.layers)) {
                 this.layers[key].resizeWorld();
             }
             this.map.setCollision([2, 3, 17, 18], true, this.layers.map);
             this.map.setCollision([71, 77, 81, 8876,  75, 72, 76, 74], true, this.layers.block);
-            this.map.setCollision([24, 29], true, this.layers.end);*/
-            this.map = this.game.add.tilemap('map_level1');
-            this.map.addTilesetImage('coin');
-            this.map.addTilesetImage('tiles');
-            this.map.addTilesetImage('snow_sprites');
-            this.layers.map = this.map.createLayer('platforms');
-            this.layers.end = this.map.createLayer('end');
-            for (let key of Object.keys(this.layers)) {
-                this.layers[key].resizeWorld();
-            }
-            this.map.setCollision([2, 3, 17, 18], true, this.layers.map);
             this.map.setCollision([24, 29], true, this.layers.end);
         }
     }

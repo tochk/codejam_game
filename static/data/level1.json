@@ -30,7 +30,7 @@
         {
          "columns":3,
          "firstgid":1,
-         "image":"..\/WebstormProjects\/codejam_game\/static\/assets\/snow_sprites.png",
+         "image":"assets/snow_sprites.png",
          "imageheight":420,
          "imagewidth":215,
          "margin":0,
@@ -43,7 +43,7 @@
         {
          "columns":14,
          "firstgid":19,
-         "image":"..\/WebstormProjects\/codejam_game\/static\/assets\/tiles.png",
+         "image":"assets/tiles.png",
          "imageheight":490,
          "imagewidth":980,
          "margin":0,
