@@ -53,7 +53,6 @@ class Tree extends Phaser.State {
         this.map = this.game.add.tilemap('tree_map');
         this.map.addTilesetImage('treeSprite');
         this.layers.tree_back = this.map.createLayer('tree_base');
-        //TODO checking for level
         this.layers.tree_third = this.map.createLayer('tree_third');
         for (let key of Object.keys(this.layers)) {
             this.layers[key].resizeWorld();
@@ -67,14 +66,24 @@ class Tree extends Phaser.State {
             height = this.game.height;
         if (this.achievement1 == 1)
             this.game.add.sprite(width / 2 - 75, height / 2 + 25, '1');
+        else
+            this.game.add.sprite(width / 2 - 75, height / 2 + 25, '1_gray');
         if (this.achievement2 == 1)
             this.game.add.sprite(width / 2 + 20, height / 2 + 25, '2');
+        else
+            this.game.add.sprite(width / 2 + 20, height / 2 + 25, '2_gray');
         if (this.achievement3 == 1)
             this.game.add.sprite(width / 2 - 75, height / 2 + 80, '3');
+        else
+            this.game.add.sprite(width / 2 - 75, height / 2 + 80, '3_gray');
         if (this.achievement4 == 1)
             this.game.add.sprite(width / 2 + 20, height / 2 + 80, '4');
+        else
+            this.game.add.sprite(width / 2 + 20, height / 2 + 80, '4_gray');
         if (this.achievement5 == 1)
             this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5');
+        else
+            this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5_gray');
     }
 
     toStart() {

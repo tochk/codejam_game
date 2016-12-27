@@ -24,6 +24,12 @@ class Preload extends Phaser.State {
         this.game.load.image('4', 'assets/achiev/4.png', true);
         this.game.load.image('5', 'assets/achiev/5.png', true);
 
+        this.game.load.image('1_gray', 'assets/achiev/1_gray.png', true);
+        this.game.load.image('2_gray', 'assets/achiev/2_gray.png', true);
+        this.game.load.image('3_gray', 'assets/achiev/3_gray.png', true);
+        this.game.load.image('4_gray', 'assets/achiev/4_gray.png', true);
+        this.game.load.image('5_gray', 'assets/achiev/5_gray.png', true);
+
         this.game.load.image('background', 'assets/bg.png', true);
     }
 
