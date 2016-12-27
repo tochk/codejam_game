@@ -66,13 +66,13 @@ class Tree extends Phaser.State {
         let width = this.game.width,
             height = this.game.height;
         if (this.achievement1 == 1)
-            this.game.add.sprite(width / 2 - 65, height / 2 + 25, '1');
+            this.game.add.sprite(width / 2 - 75, height / 2 + 25, '1');
         if (this.achievement2 == 1)
-            this.game.add.sprite(width / 2, height / 2 + 50, '2');
+            this.game.add.sprite(width / 2 + 20, height / 2 + 25, '2');
         if (this.achievement3 == 1)
-            this.game.add.sprite(width / 2 - 65, height / 2 + 75, '3');
+            this.game.add.sprite(width / 2 - 75, height / 2 + 80, '3');
         if (this.achievement4 == 1)
-            this.game.add.sprite(width / 2, height / 2 + 100, '4');
+            this.game.add.sprite(width / 2 + 20, height / 2 + 80, '4');
         if (this.achievement5 == 1)
             this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5');
     }
