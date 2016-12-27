@@ -19,7 +19,7 @@ class Tree extends Phaser.State {
         this.layers = {};
     }
 
-    loadSavedData () {
+    loadSavedData() {
         if (getCookie("data") == "ok") {
             console.log("Loaded saved data");
             this.level = parseInt(getCookie("level"));
@@ -65,25 +65,35 @@ class Tree extends Phaser.State {
         let width = this.game.width,
             height = this.game.height;
         if (this.achievement1 == 1)
-            this.game.add.sprite(width / 2 - 75, height / 2 + 25, '1');
+            this.achievementSprite1 = this.game.add.sprite(width / 2 - 75, height / 2 + 25, '1');
         else
-            this.game.add.sprite(width / 2 - 75, height / 2 + 25, '1_gray');
+            this.achievementSprite1 = this.game.add.sprite(width / 2 - 75, height / 2 + 25, '1_gray');
         if (this.achievement2 == 1)
-            this.game.add.sprite(width / 2 + 20, height / 2 + 25, '2');
+            this.achievementSprite2 = this.game.add.sprite(width / 2 + 20, height / 2 + 25, '2');
         else
-            this.game.add.sprite(width / 2 + 20, height / 2 + 25, '2_gray');
+            this.achievementSprite2 = this.game.add.sprite(width / 2 + 20, height / 2 + 25, '2_gray');
         if (this.achievement3 == 1)
-            this.game.add.sprite(width / 2 - 75, height / 2 + 80, '3');
+            this.achievementSprite3 = this.game.add.sprite(width / 2 - 75, height / 2 + 80, '3');
         else
-            this.game.add.sprite(width / 2 - 75, height / 2 + 80, '3_gray');
+            this.achievementSprite3 = this.game.add.sprite(width / 2 - 75, height / 2 + 80, '3_gray');
         if (this.achievement4 == 1)
-            this.game.add.sprite(width / 2 + 20, height / 2 + 80, '4');
+            this.achievementSprite4 = this.game.add.sprite(width / 2 + 20, height / 2 + 80, '4');
         else
-            this.game.add.sprite(width / 2 + 20, height / 2 + 80, '4_gray');
+            this.achievementSprite4 = this.game.add.sprite(width / 2 + 20, height / 2 + 80, '4_gray');
         if (this.achievement5 == 1)
-            this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5');
+            this.achievementSprite5 = this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5');
         else
-            this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5_gray');
+            this.achievementSprite5 = this.game.add.sprite(width / 2 - 25, height / 2 - 50, '5_gray');
+        this.achievementSprite1.inputEnabled = true;
+        this.achievementSprite2.inputEnabled = true;
+        this.achievementSprite3.inputEnabled = true;
+        this.achievementSprite4.inputEnabled = true;
+        this.achievementSprite5.inputEnabled = true;
+        this.achievementTextBox1 = this.game.add.text(width / 2 - 350, height / 2 + 35, "");
+        this.achievementTextBox2 = this.game.add.text(width / 2 + 100, height / 2 + 35, "");
+        this.achievementTextBox3 = this.game.add.text(width / 2 - 350, height / 2 + 90, "");
+        this.achievementTextBox4 = this.game.add.text(width / 2 + 100, height / 2 + 90, "");
+        this.achievementTextBox5 = this.game.add.text(width / 2 - 110, height / 2 - 120, "");
     }
 
     toStart() {
@@ -100,6 +110,52 @@ class Tree extends Phaser.State {
         let button = this.game.add.text(x, y, text, style);
         button.fixedToCamera = true;
         return button;
+    }
+
+
+    update() {
+        let width = this.game.width,
+            height = this.game.height;
+        if (this.achievementSprite1.input.pointerOver()) {
+            this.achievementSprite1.alpha = 0.9;
+            this.achievementTextBox1.setText("You launched game");
+        }
+        else {
+            this.achievementSprite1.alpha = 1;
+            this.achievementTextBox1.setText("");
+        }
+        if (this.achievementSprite2.input.pointerOver()) {
+            this.achievementSprite2.alpha = 0.9;
+            this.achievementTextBox2.setText("You death");
+        }
+        else {
+            this.achievementSprite2.alpha = 1;
+            this.achievementTextBox2.setText("");
+        }
+        if (this.achievementSprite3.input.pointerOver()) {
+            this.achievementSprite3.alpha = 0.9;
+            this.achievementTextBox3.setText("1st level completed");
+        }
+        else {
+            this.achievementSprite3.alpha = 1;
+            this.achievementTextBox3.setText("");
+        }
+        if (this.achievementSprite4.input.pointerOver()) {
+            this.achievementSprite4.alpha = 0.9;
+            this.achievementTextBox4.setText("2nd level completed");
+        }
+        else {
+            this.achievementSprite4.alpha = 1;
+            this.achievementTextBox4.setText("");
+        }
+        if (this.achievementSprite5.input.pointerOver()) {
+            this.achievementSprite5.alpha = 0.9;
+            this.achievementTextBox5.setText("Game completed");
+        }
+        else {
+            this.achievementSprite5.alpha = 1;
+            this.achievementTextBox5.setText("");
+        }
     }
 }
 
