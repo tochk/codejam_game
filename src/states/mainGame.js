@@ -111,7 +111,7 @@ class MainGame extends Phaser.State {
                 this.layers[key].resizeWorld();
             }
             this.map.setCollision([2, 3, 17, 18], true, this.layers.map);
-            this.map.setCollision([71, 77, 81, 8876,  75, 72, 76, 74], true, this.layers.block);
+            this.map.setCollision([71, 77, 81, 8876,  75, 72, 76, 74, 79, 8872, 85], true, this.layers.block);
             this.map.setCollision([24, 29], true, this.layers.end);
         }
     }
