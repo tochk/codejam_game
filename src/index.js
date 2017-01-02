@@ -5,6 +5,7 @@ import Tree from "./states/Tree";
 import GameOver from "./states/GameOver";
 import MainGame from "./states/MainGame";
 import Success from "./states/Success";
+import LevelSelect from "./states/LevelSelect";
 
 class Game extends Phaser.Game {
 
@@ -18,6 +19,7 @@ class Game extends Phaser.Game {
         this.state.add('GameOver', GameOver, false);
         this.state.add('Success', Success, false);
         this.state.add('MainGame', MainGame, false);
+        this.state.add('LevelSelect', LevelSelect, false);
         this.state.start('Boot');
     }
 }

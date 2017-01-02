@@ -85,8 +85,11 @@ class MainGame extends Phaser.State {
     }
 
     createMap() {
-        if ((this.level != 1) && (this.level != 2))
+        if ((this.level != 1) && (this.level != 2)) {
+            document.cookie = "level=1";
+            document.cookie = "completed=1";
             this.level = 1;
+        }
         if (this.level == 1) {
             this.map = this.game.add.tilemap('map_level1');
             this.map.addTilesetImage('coin');
@@ -94,9 +97,8 @@ class MainGame extends Phaser.State {
             this.map.addTilesetImage('snow_sprites');
             this.layers.map = this.map.createLayer('platforms');
             this.layers.end = this.map.createLayer('end');
-            for (let key of Object.keys(this.layers)) {
-                this.layers[key].resizeWorld();
-            }
+            this.layers.map.resizeWorld();
+            this.layers.end.resizeWorld();
             this.map.setCollision([2, 3, 17, 18], true, this.layers.map);
             this.map.setCollision([24, 29], true, this.layers.end);
         } else if (this.level == 2) {
@@ -107,9 +109,9 @@ class MainGame extends Phaser.State {
             this.layers.map = this.map.createLayer('platforms');
             this.layers.block = this.map.createLayer('block');
             this.layers.end = this.map.createLayer('end');
-            for (let key of Object.keys(this.layers)) {
-                this.layers[key].resizeWorld();
-            }
+            this.layers.map.resizeWorld();
+            this.layers.end.resizeWorld();
+            this.layers.block.resizeWorld();
             this.map.setCollision([2, 3, 17, 18], true, this.layers.map);
             this.map.setCollision([71, 77, 81, 8876,  75, 72, 76, 74, 79, 8872, 85], true, this.layers.block);
             this.map.setCollision([24, 29], true, this.layers.end);

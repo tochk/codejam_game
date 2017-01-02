@@ -24,19 +24,30 @@ class Start extends Phaser.State {
         let minTextColor = "#ffffff",
             textColor = "#ff2154";
         this.title = this.createText(width/2, height/2 - 150, "-HNY-", 90, minTextColor);
-        if (getCookie("level") != "3") {
+        if (getCookie("level") == "1") {
             this.toStartButton = this.createText(width / 2, height / 2 - 50, "START GAME!", 100, textColor);
-            this.toStartButton.inputEnabled = true;
-            this.toStartButton.input.useHandCursor = true;
-            this.toStartButton.events.onInputDown.add(this.startGame, this);
+        } else if (getCookie("level") == "2") {
+            this.toStartButton = this.createText(width / 2, height / 2 - 50, "Continue!", 100, textColor);
         } else {
-            this.toStartButton = this.createText(width / 2, height / 2 - 50, "Game completed!", 80, textColor);
+            this.toStartButton = this.createText(width / 2, height / 2 - 50, "New game", 100, textColor);
         }
+        this.toStartButton.inputEnabled = true;
+        this.toStartButton.input.useHandCursor = true;
+        this.toStartButton.events.onInputDown.add(this.startGame, this);
 
         this.openTree = this.createText(width/2, height/2 + 50, "Achievements tree", 80, minTextColor);
         this.openTree.inputEnabled = true;
         this.openTree.input.useHandCursor = true;
         this.openTree.events.onInputDown.add(this.showTree, this);
+
+        if (getCookie("completed") == "1" || getCookie("level") == "3")
+        {
+            this.levelSelect = this.createText(width/2, height/2 + 130, "Select level", 80, minTextColor);
+            this.levelSelect.inputEnabled = true;
+            this.levelSelect.input.useHandCursor = true;
+            this.levelSelect.events.onInputDown.add(this.selectLevel, this);
+        }
+
         if (getCookie("data") != "ok") {
             this.writeDataToCookie();
         }
@@ -46,8 +57,16 @@ class Start extends Phaser.State {
         this.game.state.start("MainGame");
     }
 
+    restartGame() {
+        this.game.state.start("RestartGame");
+    }
+
     showTree() {
         this.game.state.start("Tree");
+    }
+
+    selectLevel() {
+        this.game.state.start("LevelSelect");
     }
 
     createText(x, y, text, textSize, textColor) {
