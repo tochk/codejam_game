@@ -91,7 +91,7 @@ function copyPhaser() {
 
 /**
  * Transforms ES2015 code into ES5 code.
- * Optionally: Creates a sourcemap file 'mainGame.js.map' for debugging.
+ * Optionally: Creates a sourcemap file 'MainGame.js.map' for debugging.
  *
  * In order to avoid copying Phaser and Static files on each build,
  * I've abstracted the build logic into a separate function. This way
