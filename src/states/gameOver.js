@@ -25,9 +25,9 @@ class GameOver extends Phaser.State {
             height = this.game.height;
         let textColor = "#ffffff";
 
-        this.title = this.createText(width/2, height/2 - 50, "GAME OVER", 100, '#ff2154');
-        this.toStartButton = this.createText(width/2, height/2 + 50, "To menu", 80, textColor);
-        this.openTree = this.createText(width/2, height/2 + 150, "Open tree", 80, textColor);
+        this.title = this.createText(width / 2, height / 2 - 50, "GAME OVER", 100, '#ff2154');
+        this.toStartButton = this.createText(width / 2, height / 2 + 150, "To menu", 80, textColor);
+        this.openTree = this.createText(width / 2, height / 2 + 250, "Open tree", 80, textColor);
 
         this.toStartButton.inputEnabled = true;
         this.toStartButton.input.useHandCursor = true;
@@ -39,10 +39,18 @@ class GameOver extends Phaser.State {
         if (getCookie("achievement2") != "1") {
             document.cookie = "achievement2=1";
         }
+        this.restartLvl = this.createText(width / 2, height / 2 + 50, "Restart level", 80, textColor);
+        this.restartLvl.inputEnabled = true;
+        this.restartLvl.input.useHandCursor = true;
+        this.restartLvl.events.onInputDown.add(this.restartLevel, this);
     }
 
     toStart() {
         this.game.state.start("Start");
+    }
+
+    restartLevel() {
+        this.game.state.start("MainGame");
     }
 
     showTree() {

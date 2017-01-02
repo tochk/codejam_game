@@ -26,8 +26,8 @@ class Success extends Phaser.State {
         let textColor = "#ffffff";
 
         this.title = this.createText(width/2, height/2 - 50, "YOU WIN", 100, '#ff2154');
-        this.toStartButton = this.createText(width/2, height/2 + 50, "To menu", 80, textColor);
-        this.openTree = this.createText(width/2, height/2 + 150, "Open tree", 80, textColor);
+        this.toStartButton = this.createText(width/2, height/2 + 150, "To menu", 80, textColor);
+        this.openTree = this.createText(width/2, height/2 + 250, "Open tree", 80, textColor);
 
         this.toStartButton.inputEnabled = true;
         this.toStartButton.input.useHandCursor = true;
@@ -38,6 +38,10 @@ class Success extends Phaser.State {
 
         this.loadSavedData();
         if (this.level == 1) {
+            this.nextLvl = this.createText(width/2, height/2 + 50, "Next level", 80, textColor);
+            this.nextLvl.inputEnabled = true;
+            this.nextLvl.input.useHandCursor = true;
+            this.nextLvl.events.onInputDown.add(this.nextLevel, this);
             document.cookie = "level=2";
             document.cookie = "achievement3=1";
         }
@@ -61,6 +65,10 @@ class Success extends Phaser.State {
 
     toStart() {
         this.game.state.start("Start");
+    }
+
+    nextLevel() {
+        this.game.state.start("MainGame");
     }
 
     showTree() {
