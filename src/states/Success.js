@@ -46,8 +46,15 @@ class Success extends Phaser.State {
             document.cookie = "achievement3=1";
         }
         if (this.level == 2) {
+            this.nextLvl = this.createText(width/2, height/2 + 50, "Next level", 80, textColor);
+            this.nextLvl.inputEnabled = true;
+            this.nextLvl.input.useHandCursor = true;
+            this.nextLvl.events.onInputDown.add(this.nextLevel, this);
             document.cookie = "level=3";
             document.cookie = "achievement4=1";
+        }
+        if (this.level == 3) {
+            document.cookie = "level=4";
             document.cookie = "achievement5=1";
         }
     }

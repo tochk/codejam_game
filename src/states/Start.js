@@ -26,7 +26,7 @@ class Start extends Phaser.State {
         this.title = this.createText(width/2, height/2 - 150, "-HNY-", 90, minTextColor);
         if (getCookie("level") == "1") {
             this.toStartButton = this.createText(width / 2, height / 2 - 50, "START GAME!", 100, textColor);
-        } else if (getCookie("level") == "2") {
+        } else if (getCookie("level") == "2" || getCookie("level") == "3") {
             this.toStartButton = this.createText(width / 2, height / 2 - 50, "Continue!", 100, textColor);
         } else {
             this.toStartButton = this.createText(width / 2, height / 2 - 50, "New game", 100, textColor);
@@ -40,7 +40,7 @@ class Start extends Phaser.State {
         this.openTree.input.useHandCursor = true;
         this.openTree.events.onInputDown.add(this.showTree, this);
 
-        if (getCookie("completed") == "1" || getCookie("level") == "3")
+        if (getCookie("completed") == "1" || getCookie("level") == "4")
         {
             this.levelSelect = this.createText(width/2, height/2 + 130, "Select level", 80, minTextColor);
             this.levelSelect.inputEnabled = true;

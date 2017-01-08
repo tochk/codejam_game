@@ -11,7 +11,7 @@ function getCookie(name) {
 }
 
 
-class Start extends Phaser.State {
+class LevelSelect extends Phaser.State {
 
     create() {
         console.log("Loaded level selector");
@@ -40,6 +40,10 @@ class Start extends Phaser.State {
         this.toLevel2.input.useHandCursor = true;
         this.toLevel2.events.onInputDown.add(this.goToLevel2, this);
 
+        this.toLevel3 = this.createText(width/2, height/2 + 120, "Level 3", 80, minTextColor);
+        this.toLevel3.inputEnabled = true;
+        this.toLevel3.input.useHandCursor = true;
+        this.toLevel3.events.onInputDown.add(this.goToLevel3, this);
 
     }
 
@@ -54,6 +58,11 @@ class Start extends Phaser.State {
 
     goToLevel2() {
         document.cookie = "level=2";
+        this.game.state.start("MainGame");
+    }
+
+    goToLevel3() {
+        document.cookie = "level=3";
         this.game.state.start("MainGame");
     }
 
@@ -72,4 +81,4 @@ class Start extends Phaser.State {
     }
 }
 
-export default Start;
+export default LevelSelect;

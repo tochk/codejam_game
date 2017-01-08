@@ -126,7 +126,7 @@ class Tree extends Phaser.State {
         }
         if (this.achievementSprite2.input.pointerOver()) {
             this.achievementSprite2.alpha = 0.9;
-            this.achievementTextBox2.setText("You death");
+            this.achievementTextBox2.setText("You dead");
         }
         else {
             this.achievementSprite2.alpha = 1;
