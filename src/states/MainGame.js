@@ -49,7 +49,7 @@ class MainGame extends Phaser.State {
 
 
 
-        if (this.level == 2) {
+        if (this.level == 2 || this.level === 3) {
             if (this.jumpButton.isDown && this.player.body.onFloor() && this.game.time.now > this.jumpTimer)
             {
                 this.player.body.velocity.y = -700;
@@ -67,7 +67,7 @@ class MainGame extends Phaser.State {
             this.loseGame();
         }
 
-        if (this.level == 2) {
+        if (this.level == 2 || this.level === 3) {
             this.game.physics.arcade.collide(this.player, this.layers.block, this.loseGame, null, this);
         }
     }
@@ -117,16 +117,19 @@ class MainGame extends Phaser.State {
             this.map.setCollision([71, 77, 81, 8876,  75, 72, 76, 74, 79, 8872, 85], true, this.layers.block);
             this.map.setCollision([24, 29], true, this.layers.end);
         } else if (this.level == 3) {
-            this.map = this.game.add.tilemap('map_level1');
-            this.map.addTilesetImage('coin');
+            this.game.physics.arcade.gravity.y = 300;
+            this.map = this.game.add.tilemap('map_level3');
             this.map.addTilesetImage('tiles');
             this.map.addTilesetImage('snow_sprites');
-            this.layers.map = this.map.createLayer('platforms');
-            this.layers.end = this.map.createLayer('end');
+            this.layers.map = this.map.createLayer('down');
+            this.layers.block = this.map.createLayer('frag');
+            this.layers.end = this.map.createLayer('out');
             this.layers.map.resizeWorld();
             this.layers.end.resizeWorld();
-            this.map.setCollision([2, 3, 17, 18], true, this.layers.map);
-            this.map.setCollision([24, 29], true, this.layers.end);
+            this.layers.block.resizeWorld();
+            this.map.setCollision([78], true, this.layers.map);
+            this.map.setCollision([1, 2, 3], true, this.layers.block);
+            this.map.setCollision([6], true, this.layers.end);
         }
     }
 
