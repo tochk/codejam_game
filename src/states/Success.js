@@ -25,19 +25,12 @@ class Success extends Phaser.State {
             height = this.game.height;
         let textColor = "#ffffff";
 
-        this.title = this.createText(width/2, height/2 - 50, "YOU WIN", 100, '#ff2154');
-        this.toStartButton = this.createText(width/2, height/2 + 150, "To menu", 80, textColor);
-        this.openTree = this.createText(width/2, height/2 + 250, "Open tree", 80, textColor);
-
-        this.toStartButton.inputEnabled = true;
-        this.toStartButton.input.useHandCursor = true;
-        this.toStartButton.events.onInputDown.add(this.toStart, this);
-        this.openTree.inputEnabled = true;
-        this.openTree.input.useHandCursor = true;
-        this.openTree.events.onInputDown.add(this.showTree, this);
 
         this.loadSavedData();
         if (this.level == 1) {
+            this.title = this.createText(width/2, height/2 - 50, "YOU WIN", 100, '#ff2154');
+            this.toStartButton = this.createText(width/2, height/2 + 150, "To menu", 80, textColor);
+            this.openTree = this.createText(width/2, height/2 + 250, "Open tree", 80, textColor);
             this.nextLvl = this.createText(width/2, height/2 + 50, "Next level", 80, textColor);
             this.nextLvl.inputEnabled = true;
             this.nextLvl.input.useHandCursor = true;
@@ -46,6 +39,9 @@ class Success extends Phaser.State {
             document.cookie = "achievement3=1";
         }
         if (this.level == 2) {
+            this.title = this.createText(width/2, height/2 - 50, "YOU WIN", 100, '#ff2154');
+            this.toStartButton = this.createText(width/2, height/2 + 150, "To menu", 80, textColor);
+            this.openTree = this.createText(width/2, height/2 + 250, "Open tree", 80, textColor);
             this.nextLvl = this.createText(width/2, height/2 + 50, "Next level", 80, textColor);
             this.nextLvl.inputEnabled = true;
             this.nextLvl.input.useHandCursor = true;
@@ -54,9 +50,20 @@ class Success extends Phaser.State {
             document.cookie = "achievement4=1";
         }
         if (this.level == 3) {
+            this.title = this.createText(width/2, height/2 - 50, "YOU WIN", 100, '#ff2154');
+            this.toStartButton = this.createText(width/2, height/2 + 50, "To menu", 80, textColor);
+            this.openTree = this.createText(width/2, height/2 + 150, "Open tree", 80, textColor);
             document.cookie = "level=4";
             document.cookie = "achievement5=1";
         }
+
+
+        this.toStartButton.inputEnabled = true;
+        this.toStartButton.input.useHandCursor = true;
+        this.toStartButton.events.onInputDown.add(this.toStart, this);
+        this.openTree.inputEnabled = true;
+        this.openTree.input.useHandCursor = true;
+        this.openTree.events.onInputDown.add(this.showTree, this);
     }
 
     loadSavedData () {
